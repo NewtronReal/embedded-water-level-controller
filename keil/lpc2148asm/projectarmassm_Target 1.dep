@@ -1,0 +1,2 @@
+Dependencies for Project 'projectarmassm', Target 'Target 1': (DO NOT MODIFY !)
+F (.\waterlevelcontrol.s)(0x69C94AEF)(--cpu ARM7TDMI --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil474\ARM\RV31\INC-I C:\Keil474\ARM\CMSIS\Include-I C:\Keil474\ARM\Inc\Philips--list .\waterlevelcontrol.lst --xref -o .\waterlevelcontrol.o --depend .\waterlevelcontrol.d)

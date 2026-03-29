@@ -1,0 +1,67 @@
+A51 MACRO ASSEMBLER  WATERLEVELCONTROLLER                                                 03/29/2026 20:38:10 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\waterlevelcontroller.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE waterlevelcontroller.a51 SET(SMALL) DEBUG PRINT(.\Listings\waterlevelco
+                      ntroller.lst) OBJECT(.\Objects\waterlevelcontroller.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+                       2     
+0000                   3     MAIN:
+0000 7590FF            4         MOV P1, #0FFH       ; Set Port1 as input
+0003 75A000            5         MOV P2, #00H        ; Clear Port2 (output)
+                       6     
+0006                   7     LOOP:
+0006 E590              8         MOV A, P1           ; Read water level (8-bit input)
+                       9     
+                      10         ; Check LOW condition (A < LOW_THRESHOLD)
+0008 F8               11         MOV R0, A
+0009 C3               12         CLR C
+000A E8               13         MOV A, R0
+000B 9464             14         SUBB A, #100
+000D 4008             15         JC LOW_LEVEL        ; Jump if A < LOW_THRESHOLD
+                      16     
+                      17         ; Check HIGH condition (A >= HIGH_THRESHOLD)
+000F E8               18         MOV A, R0
+0010 C3               19         CLR C
+0011 94C8             20         SUBB A, #200
+0013 5006             21         JNC HIGH_LEVEL      ; Jump if A >= HIGH_THRESHOLD
+                      22     
+                      23         ; Otherwise MEDIUM level
+0015                  24     MEDIUM_LEVEL:
+                      25         ; Do nothing (keep previous state)
+0015 80EF             26         SJMP LOOP
+                      27     
+0017                  28     LOW_LEVEL:
+0017 D2A0             29         SETB P2.0           ; Turn ON pump
+0019 80EB             30         SJMP LOOP
+                      31     
+001B                  32     HIGH_LEVEL:
+001B C2A0             33         CLR P2.0            ; Turn OFF pump
+001D 80E7             34         SJMP LOOP
+                      35     
+                      36     END
+A51 MACRO ASSEMBLER  WATERLEVELCONTROLLER                                                 03/29/2026 20:38:10 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+HIGH_LEVEL . . . .  C ADDR   001BH   A   
+LOOP . . . . . . .  C ADDR   0006H   A   
+LOW_LEVEL. . . . .  C ADDR   0017H   A   
+MAIN . . . . . . .  C ADDR   0000H   A   
+MEDIUM_LEVEL . . .  C ADDR   0015H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,4 @@
+Dependencies for Project 'waterlevelcontrol', Target 'Target 1': (DO NOT MODIFY !)
+F (.\Startup.s)(0x532C14EA)(--cpu ARM7TDMI --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil474\ARM\RV31\INC-I C:\Keil474\ARM\CMSIS\Include-I C:\Keil474\ARM\Inc\Philips--list .\startup.lst --xref -o .\startup.o --depend .\startup.d)
+F (.\waterlevelcontroller.c)(0x69C9558E)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil474\ARM\RV31\INC-I C:\Keil474\ARM\CMSIS\Include-I C:\Keil474\ARM\Inc\Philips-o .\waterlevelcontroller.o --omf_browse .\waterlevelcontroller.crf --depend .\waterlevelcontroller.d)
+I (C:\Keil474\ARM\Inc\Philips\lpc214x.h)(0x532C1500)
